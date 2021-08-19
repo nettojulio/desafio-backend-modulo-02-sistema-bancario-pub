@@ -24,23 +24,48 @@ Seu papel é construir uma RESTful API que permita:
     -   Um arquivo servidor.js
     -   Um arquivo de rotas
     -   Um pasta com controladores
--   Todas as rotas deverão passar nos testes disponibilizados.
 -   Qualquer valor (dinheiro) deverá ser representado em centavos (Ex.: R$ 10,00 reais = 1000)
 -   Evite códigos duplicados. Antes de copiar e colar, pense se não faz sentido esse pedaço de código estar centralizado numa função.
-
-## Testes automatizados
-
-Como critério de avaliação (correção do desafio), vamos rodar testes automatizados, onde todos os endpoints (rotas) implementados serão testados por nós.
-
-No repositório inicial do desafio possui uma pasta chamada `tests` que não poderá ser modificada, inclusive as pastas e arquivos internos.
-
-Para explicar como os testes serão utilizados, disponibilizamos um vídeo explicativo no seguinte link:
-
-[link do vídeo]
 
 ## Persistências dos dados
 
 Os dados serão persistidos em memória, no objeto existente dentro do arquivo `bancodedados.js`. Todas as transações e contas bancárias deverão ser inseridas dentro deste objeto, seguindo a estrutura que já existe.
+
+### Estrutura do objeto no arquivo `bancodedados.js`
+
+```javascript
+{
+    banco: {
+        nome: "Cubos Bank",
+        numero: "123",
+        agencia: "0001",
+        senha: "Cubos123Bank",
+    },
+    contas: [
+        // array de contas bancárias
+    ],
+    saques: [
+        // array de saques
+    ],
+    depositos: [
+        // array de depósitos
+    ],
+    transferencias: [
+        // array de transferências
+    ],
+}
+```
+
+## Status Code
+
+Abaixo, listamos os possíveis `status code` esperados como resposta da API.
+
+```javascript
+// 200 = requisição bem sucedida
+// 201 = requisição bem sucedida e algo foi criado
+// 400 = o servidor não entendeu a requisição pois está com uma sintaxe/formato inválido
+// 404 = o servidor não pode encontrar o recurso solicitado
+```
 
 ## Endpoints
 
@@ -52,7 +77,8 @@ Esse endpoint deverá listar todas as contas bancárias existentes.
 
 -   Você deverá, **OBRIGATORIAMENTE**:
 
-    -   Validar a `senha do banco` (passado como query params na url)
+    -   Verificar se a senha do banco foi informada (passado como query params na url)
+    -   Validar se a senha do banco está correta
 
 -   Entrada (query params)
 
@@ -107,8 +133,8 @@ Esse endpoint deverá criar uma conta bancária, onde será gerado um número ú
     -   Criar uma nova conta cujo número é único
     -   CPF deve ser um campo único.
     -   E-mail deve ser um campo único.
-    -   Criar uma senha numérica de 4 digitos
-    -   O saldo inicial da conta deve ser 0
+    -   Verificar se todos os campos foram informados (todos são obrigatórios)
+    -   Definir o saldo inicial da conta como 0
 
 -   Entradas
 
@@ -120,10 +146,9 @@ Esse endpoint deverá criar uma conta bancária, onde será gerado um número ú
     -   Senha
 
 -   Saída
+
     -   Dados usuário
-    -   Número conta
-    -   Agência
-    -   Banco
+    -   Número da conta
     -   Saldo
 
 #### Função
@@ -165,7 +190,10 @@ Esse endpoint deverá atualizar apenas os dados do usuário de uma conta bancár
 
 -   Você deverá, **OBRIGATORIAMENTE**:
 
+    -   Verificar se foi passado, ao menos, um campo no body da requisição
     -   Verificar se o numero da conta passado como parametro na URL é válida
+    -   Se o CPF for informado, verificar se já existe outro registro com o mesmo CPF
+    -   Se o E-mail for informado, verificar se já existe outro registro com o mesmo E-mail
     -   Atualizar um ou mais campos dos dados do usuário de uma conta bancária
 
 -   Entradas
@@ -178,10 +206,9 @@ Esse endpoint deverá atualizar apenas os dados do usuário de uma conta bancár
     -   Senha
 
 -   Saída
+
     -   Dados usuário
-    -   Número conta
-    -   Agência
-    -   Banco
+    -   Número da conta
     -   Saldo
 
 #### Função
@@ -223,6 +250,7 @@ Esse endpoint deve excluir uma conta bancária existente.
     -   Numero da conta bancária (passado como parâmetro na rota)
 
 -   Saida
+
     -   Sucesso ou erro
 
 #### Função
@@ -255,9 +283,10 @@ Esse endpoint deverá somar o valor do depósito ao saldo de uma conta válida e
 
 -   Você deverá, **OBRIGATORIAMENTE**:
 
+    -   Verificar se o numero da conta e o valor do deposito foram informados no body
     -   Verificar se a conta bancária informada existe
-    -   Somar o valor de depósito ao saldo da conta encontrada
     -   Não permitir depósitos com valores negativos ou zerados
+    -   Somar o valor de depósito ao saldo da conta encontrada
 
 -   Entrada
 
@@ -265,6 +294,7 @@ Esse endpoint deverá somar o valor do depósito ao saldo de uma conta válida e
     -   Valor
 
 -   Saida
+
     -   Sucesso ou erro
 
 #### Função
@@ -307,6 +337,7 @@ Esse endpoint deverá realizar o saque de um valor em uma determinada conta banc
 
 -   Você deverá, **OBRIGATORIAMENTE**:
 
+    -   Verificar se o numero da conta, o valor do saque e a senha foram informados no body
     -   Verificar se a conta bancária informada existe
     -   Verificar se a senha informada é uma senha válida para a conta informada
     -   Verificar se há saldo disponível para saque
@@ -314,11 +345,12 @@ Esse endpoint deverá realizar o saque de um valor em uma determinada conta banc
 
 -   Entrada
 
-    -   Número
+    -   Número da conta
     -   Valor
     -   Senha
 
 -   Saída
+
     -   Sucesso ou erro
 
 #### Função
@@ -361,6 +393,7 @@ Esse endpoint deverá permitir a transferência de recursos (dinheiro) de uma co
 
 -   Você deverá, **OBRIGATORIAMENTE**:
 
+    -   Verificar se o número da conta de origem, de destino, senha da conta de origem e valor da transferência foram informados no body
     -   Verificar se a conta bancária de origem informada existe
     -   Verificar se a conta bancária de destino informada existe
     -   Verificar se a senha informada é uma senha válida para a conta de origem informada
@@ -376,6 +409,7 @@ Esse endpoint deverá permitir a transferência de recursos (dinheiro) de uma co
     -   Número da conta (destino)
 
 -   Saída
+
     -   Sucesso ou erro
 
 #### Função
@@ -419,8 +453,9 @@ Esse endpoint deverá retornar o saldo de uma conta bancária.
 
 -   Você deverá, **OBRIGATORIAMENTE**:
 
-    -   Verificar se a conta bancária informada (passado como query params na url) existe
-    -   Verificar se a senha informada (passado como query params na url) é uma senha válida
+    -   Verificar se o numero da conta e a senha foram informadas (passado como query params na url)
+    -   Verificar se a conta bancária informada existe
+    -   Verificar se a senha informada é uma senha válida
     -   Exibir o saldo da conta bancária em questão
 
 -   Entrada (query params)
@@ -429,6 +464,7 @@ Esse endpoint deverá retornar o saldo de uma conta bancária.
     -   Senha
 
 -   Saída
+
     -   Saldo da conta
 
 #### Função
@@ -461,9 +497,10 @@ Esse endpoint deverá listar as transações realizadas de uma conta específica
 
 -   Você deverá, **OBRIGATORIAMENTE**:
 
-    -   Verificar se a conta bancária informada (passado como query params na url) existe
-    -   Verificar se a senha informada (passado como query params na url) é uma senha válida
-    -   Retornar a lista de transferências, depósitos e saques.
+    -   Verificar se o numero da conta e a senha foram informadas (passado como query params na url)
+    -   Verificar se a conta bancária informada existe
+    -   Verificar se a senha informada é uma senha válida
+    -   Retornar a lista de transferências, depósitos e saques da conta em questão.
 
 -   Entrada (query params)
 
