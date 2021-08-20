@@ -574,12 +574,11 @@ function extrato(...) {
 
 ## Aulas úteis:
 
--   [Roteador e Controlador](https://plataforma.cubos.academy/curso/61b2921e-a262-4f04-b943-89c4cfb15e5c/data/17/05/2021/aula/9821747f-8d71-47ee-b48f-426997e37ce2/b5b395c1-1c49-4866-a749-8719a176c3c5)
--   [Reutilizando validações](https://plataforma.cubos.academy/curso/61b2921e-a262-4f04-b943-89c4cfb15e5c/data/17/05/2021/aula/9821747f-8d71-47ee-b48f-426997e37ce2/8206f90d-d0e5-472d-8e65-331dbe5f0ecd)
--   [Adicionando dias úteis com date-fns](https://plataforma.cubos.academy/curso/61b2921e-a262-4f04-b943-89c4cfb15e5c/data/24/05/2021/aula/567d09bf-b527-42fa-b063-63d9ff4743f1/7c3ac2fe-80e1-4646-9e34-8dd8b38f5a0d)
--   [async / await](https://plataforma.cubos.academy/curso/61b2921e-a262-4f04-b943-89c4cfb15e5c/data/31/05/2021/aula/e12827a0-8c67-4293-92aa-d5763020a2f7/bfa1c52e-6502-474f-aecf-1cf718deff88)
--   [try / catch](https://plataforma.cubos.academy/curso/61b2921e-a262-4f04-b943-89c4cfb15e5c/data/07/06/2021/aula/0304e88c-4ac5-42b8-924e-81216af18f35/f882d693-d529-4fa4-bc19-27464c856582)
--   [Criando transações pagarme](https://plataforma.cubos.academy/curso/61b2921e-a262-4f04-b943-89c4cfb15e5c/data/07/06/2021/aula/0304e88c-4ac5-42b8-924e-81216af18f35/9446fc5e-a71f-49b0-a285-62b306d7a0cd)
+-   [Roteador e Controlador](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/28/07/2021/aula/b648d8cb-a9db-4224-96dc-ed83e99bcc7b/27eebd29-2318-41eb-b789-201f075be137)
+-   [Aula API REST](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/26/07/2021/aula/059dc3f1-f8b5-4e5b-86ec-cea2736645b8/)
+-   [Formatando datas com date-fns](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/02/08/2021/aula/506a987e-ba14-4ee4-9326-c9e1aa62b7f7/5d2dceac-f1b3-460a-856e-b83701fa5206)
+-   [Aula de funções e objetos](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/21/06/2021/aula/5fbcc043-aa55-45a4-bced-4c59751fc2d8/)
+-   [Aula de Revisão](https://plataforma.cubos.academy/curso/b0149c95-5986-4ac2-ac4c-a0f323353f26/data/18/08/2021/aula/cbf59ce0-e7c7-405d-938e-e70afcbba534/)
 
 **LEMBRE-SE**: é melhor feito do que perfeito!!!
 
