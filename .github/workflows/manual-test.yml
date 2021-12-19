@@ -1,6 +1,6 @@
-name: Jest Tests
+name: Manual Jest Tests
 
-on: [pull_request, pull_request_target]
+on: [pull_request, workflow_dispatch]
 
 jobs:
   build:
@@ -84,7 +84,4 @@ jobs:
         with:
           url: "https://test-mod2-back.web.app/tests/validacoes/extratoSchema.js"
           target: src/tests/validacoes
-      - id: downloadfile12  # Remember to give an ID if you need the output filename
-        name: Download the file
-        run: wget https://test-mod2-back.web.app/tests/validacoes/extratoSchema.js -O src/bancodedados.js && ls -ltha src/bancodedados.js && cat src/bancodedados.js
       - run: npm test
